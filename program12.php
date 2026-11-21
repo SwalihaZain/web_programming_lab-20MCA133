@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form method="POST" action="">
+    <label>Name:</label>
+    <input type="text" name="name"><br><br>
+
+    <label>Email:</label>
+    <input type="text" name="email"><br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password"><br><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" name="confirm_password"><br><br>
+
+    <input type="submit" name="submit" value="Submit">
+  </form>
+
+  <?php
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = test_input($_POST["name"]);
+    $email = test_input($_POST["email"]);
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+
+    if (empty($name)) {
+      echo "Name is required";
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+      echo "Only letters and white space allowed";
+    } elseif (empty($email)) {
+      echo "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "Invalid email format";
+    } elseif (empty($password)) {
+      echo "Password is required";
+    } elseif (empty($confirm_password)) {
+      echo "Confirm password is required";
+    } elseif ($password !== $confirm_password) {
+      echo "Passwords do not match";
+    } else {
+      echo "Registration successful!";
+    }
+  }
+  ?>
+</body>
+</html>
