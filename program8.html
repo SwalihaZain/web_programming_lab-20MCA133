@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var phone = document.getElementById("phone").value;
+      var course = document.getElementById("course").value;
+      var address = document.getElementById("address").value;
+
+      if (name === "") {
+        alert("Enter your name");
+        return false;
+      }
+      if (email === "") {
+        alert("Enter your email");
+        return false;
+      }
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters");
+        return false;
+      }
+      if (phone.length !== 10 || isNaN(phone)) {
+        alert("Enter a valid 10-digit phone number");
+        return false;
+      }
+      if (course === "") {
+        alert("Select your course");
+        return false;
+      }
+      if (address === "") {
+        alert("Enter your address");
+        return false;
+      }
+
+      alert("Registration successful!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form onsubmit="return validateForm()">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="text" id="email"><br><br>
+    Password: <input type="password" id="password"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+    Course:
+    <select id="course">
+      <option value="">Select Course</option>
+      <option value="BCA">BCA</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="MCA">MCA</option>
+      <option value="M.Tech">M.Tech</option>
+    </select><br><br>
+    Address: <textarea id="address"></textarea><br><br>
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>

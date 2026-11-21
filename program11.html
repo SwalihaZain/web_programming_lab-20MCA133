@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Examination</title>
+  <script>
+    function calculateResult() {
+      var score = 0;
+
+      var q1 = document.querySelector('input[name="q1"]:checked');
+      var q2 = document.querySelector('input[name="q2"]:checked');
+      var q3 = document.querySelector('input[name="q3"]:checked');
+      var q4 = document.querySelector('input[name="q4"]:checked');
+      var q5 = document.querySelector('input[name="q5"]:checked');
+
+      if (q1 && q1.value === "B") {
+        score++;
+      }
+      if (q2 && q2.value === "C") {
+        score++;
+      }
+      if (q3 && q3.value === "A") {
+        score++;
+      }
+      if (q4 && q4.value === "D") {
+        score++;
+      }
+      if (q5 && q5.value === "B") {
+        score++;
+      }
+
+      document.getElementById("result").innerHTML = "Your score is " + score + " out of 5";
+    }
+  </script>
+</head>
+<body>
+  <h1>Online Examination</h1>
+  <form>
+    <h2>Enter name</h2>
+    <input type="text">
+
+    <h2>Date of birth</h2>
+    <input type="date">
+
+    <h2>Enter Register number</h2>
+    <input type="text" name="reg" id="reg">
+
+    <p><b>1. What does HTML stand for?</b></p>
+    <input type="radio" name="q1" value="A"> A. High Text Machine Language<br>
+    <input type="radio" name="q1" value="B"> B. Hyper Text Markup Language<br>
+    <input type="radio" name="q1" value="C"> C. Hyper Tool Multi Language<br>
+    <input type="radio" name="q1" value="D"> D. Home Text Markup Language<br>
+
+    <p><b>2. Which language is used to add interactivity to a web page?</b></p>
+    <input type="radio" name="q2" value="A"> A. HTML<br>
+    <input type="radio" name="q2" value="B"> B. CSS<br>
+    <input type="radio" name="q2" value="C"> C. JavaScript<br>
+    <input type="radio" name="q2" value="D"> D. SQL<br>
+
+    <p><b>3. Which tag is used to create a paragraph in HTML?</b></p>
+    <input type="radio" name="q3" value="A"> A. &lt;p&gt;<br>
+    <input type="radio" name="q3" value="B"> B. &lt;h1&gt;<br>
+    <input type="radio" name="q3" value="C"> C. &lt;br&gt;<br>
+    <input type="radio" name="q3" value="D"> D. &lt;div&gt;<br>
+
+    <p><b>4. Which object is used for mathematical operations in JavaScript?</b></p>
+    <input type="radio" name="q4" value="A"> A. String<br>
+    <input type="radio" name="q4" value="B"> B. Date<br>
+    <input type="radio" name="q4" value="C"> C. Array<br>
+    <input type="radio" name="q4" value="D"> D. Math<br>
+
+    <p><b>5. Which HTML tag is used to create a hyperlink?</b></p>
+    <input type="radio" name="q5" value="A"> A. &lt;link&gt;<br>
+    <input type="radio" name="q5" value="B"> B. &lt;a&gt;<br>
+    <input type="radio" name="q5" value="C"> C. &lt;href&gt;<br>
+    <input type="radio" name="q5" value="D"> D. &lt;url&gt;<br><br>
+
+    <input type="button" value="Submit Exam" onclick="calculateResult()">
+  </form>
+
+  <h2 id="result"></h2>
+</body>
+</html>

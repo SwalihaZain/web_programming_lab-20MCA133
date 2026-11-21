@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+    th {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <h2 align="center">Calendar</h2>
+  Year: <input type="number" id="year" placeholder="Enter year"><br><br>
+  Month: <input type="number" id="month" placeholder="1 to 12"><br><br>
+  <button onclick="generate()">Generate Calendar</button>
+  <div id="result"></div>
+
+  <script>
+    function generate() {
+      var year = Number(document.getElementById("year").value);
+      var month = Number(document.getElementById("month").value);
+
+      if (year < 1 || month < 1 || month > 12) {
+        alert("Enter a valid year and month!");
+        return;
+      }
+
+      var firstDay = new Date(year, month - 1, 1).getDay();
+      var days = new Date(year, month, 0).getDate();
+
+      var html = "<h3 align='center'>" + month + " / " + year + "</h3>";
+      html += "<table><tr>";
+
+      var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      for (var i = 0; i < 7; i++) {
+        html += "<th>" + week[i] + "</th>";
+      }
+      html += "</tr><tr>";
+
+      for (var i = 0; i < firstDay; i++) {
+        html += "<td></td>";
+      }
+
+      for (var day = 1; day <= days; day++) {
+        html += "<td>" + day + "</td>";
+        if ((firstDay + day) % 7 === 0 && day !== days) {
+          html += "</tr><tr>";
+        }
+      }
+
+      html += "</tr></table>";
+      document.getElementById("result").innerHTML = html;
+    }
+  </script>
+</body>
+</html>

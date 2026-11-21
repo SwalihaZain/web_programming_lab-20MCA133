@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mouse Over Event</title>
+  <script>
+    function mouseOver() {
+      document.getElementById("image").src ="public/image2.jpg";
+      document.getElementById("text").innerHTML = "You are now viewing the new content";
+    }
+
+    function mouseOut() {
+      document.getElementById("image").src ="public/image1.jpg";
+      document.getElementById("text").innerHTML = "Move the mouse over the image";
+    }
+  </script>
+</head>
+<body>
+  <h1>Mouse Over Event Handling</h1>
+  <p id="text">Move the mouse over the image</p>
+  <img id="image" src="public/image1.jpg" width="300" height="200" onmouseover="mouseOver()" onmouseout="mouseOut()">
+</body>
+</html>
